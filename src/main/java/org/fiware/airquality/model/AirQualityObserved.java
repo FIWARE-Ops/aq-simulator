@@ -1,21 +1,12 @@
 package org.fiware.airquality.model;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import io.micronaut.http.HttpMethod;
 import io.micronaut.http.HttpRequest;
-import io.micronaut.http.HttpResponse;
 import io.micronaut.http.client.HttpClient;
-import io.reactivex.Flowable;
 import io.reactivex.Single;
-import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.checkerframework.checker.units.qual.A;
 
-import javax.management.AttributeList;
-import java.net.URI;
-import java.net.URL;
 import java.time.Clock;
 import java.time.Duration;
 import java.time.Instant;
@@ -27,10 +18,14 @@ import java.util.Map;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-
+/**
+ * The AirQualityObserved simulator. Will generate current and historic data and send them to the broker.
+ * Each instance will be represent one AirQualityObserved-Entity
+ */
 @Slf4j
 @RequiredArgsConstructor
 public class AirQualityObserved {
+
 	private static final DateTimeFormatter DATE_TIME_FORMATTER;
 
 	static {
@@ -49,21 +44,24 @@ public class AirQualityObserved {
 
 	private final AqData aqData;
 
+	// Starting point for the simulation
 	public void startSimulation(int age, int historicDensity, int sampleInterval) {
 		log.info("Start simulation for {}", aqData.getId());
 		generateHistoricData(age, historicDensity);
 		scheduledExecutorService.scheduleAtFixedRate(this::updateData, getRandomNumber(0, 30).intValue(), sampleInterval, TimeUnit.SECONDS);
 	}
 
+	// Send an update of current data
 	private void updateData() {
 		updateData(clock.instant());
 		sendUpdate();
 	}
 
+	// generate and send historic data
 	private void generateHistoricData(int age, int historicDensity) {
 		Instant currentTime = clock.instant();
 		Instant maxAge = currentTime.minus(Duration.of(age, ChronoUnit.DAYS));
-		while (maxAge.isAfter(currentTime)) {
+		while (maxAge.isBefore(currentTime)) {
 			updateData(currentTime);
 			sendUpdate();
 			currentTime = currentTime.minus(Duration.of(historicDensity, ChronoUnit.MINUTES));
@@ -71,6 +69,7 @@ public class AirQualityObserved {
 
 	}
 
+	// send an update of the current aqData
 	private void sendUpdate() {
 		log.info("Update {}", aqData.getId());
 		HttpRequest<AqData> httpRequest = HttpRequest
@@ -80,6 +79,7 @@ public class AirQualityObserved {
 		Single.fromPublisher(httpClient.exchange(httpRequest)).doOnError((e) -> log.warn("Update failed.", e)).subscribe();
 	}
 
+	// generate data to be sent for the provided timestamp
 	private void updateData(Instant dateObserved) {
 		MetaDataEntry<String> dateObservedMetaData = new MetaDataEntry<>("DateTime", DATE_TIME_FORMATTER.format(dateObserved));
 
