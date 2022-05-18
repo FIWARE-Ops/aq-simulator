@@ -1,0 +1,30 @@
+micronaut:
+  application:
+    name: ${project.artifactId}
+
+  metrics:
+    enabled: true
+    export:
+      prometheus:
+        step: PT2s
+        descriptions: false
+
+---
+endpoints:
+  metrics:
+    enabled: true
+  health:
+    enabled: true
+  info:
+    enabled: true
+    sensitive: false
+
+---
+loggers:
+  levels:
+    ROOT: TRACE
+
+---
+general:
+  aqSimulations:
+    - id: "urn:ngsi:AirQualityObserved:test"
