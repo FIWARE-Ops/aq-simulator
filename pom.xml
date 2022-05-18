@@ -310,14 +310,6 @@
                                     <tag>${image.tag}</tag>
                                 </tags>
                             </to>
-                            <extraDirectories>
-                                <paths>
-                                    <path>
-                                        <from>LICENSE</from>
-                                        <into>/licenses</into>
-                                    </path>
-                                </paths>
-                            </extraDirectories>
                             <container>
                                 <labels>
                                     <!-- oci labels -->
