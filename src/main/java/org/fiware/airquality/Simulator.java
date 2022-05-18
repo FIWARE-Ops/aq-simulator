@@ -1,10 +1,6 @@
 package org.fiware.airquality;
 
-import com.sun.source.doctree.SeeTree;
 import io.micronaut.context.annotation.Context;
-import io.micronaut.context.annotation.Replaces;
-import io.micronaut.context.annotation.Requirements;
-import io.micronaut.http.client.HttpClient;
 import io.micronaut.http.client.netty.DefaultHttpClient;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -15,13 +11,15 @@ import org.fiware.airquality.model.AqData;
 import org.fiware.airquality.model.Attribute;
 
 import javax.annotation.PostConstruct;
-import java.net.HttpCookie;
 import java.time.Clock;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.concurrent.ScheduledExecutorService;
 
+/**
+ * Simulator for reading out the config and starting the actual simulator instances
+ */
 @Slf4j
 @Context
 @RequiredArgsConstructor

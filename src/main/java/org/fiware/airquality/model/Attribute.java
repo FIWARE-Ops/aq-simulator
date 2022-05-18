@@ -5,6 +5,9 @@ import lombok.NoArgsConstructor;
 
 import java.util.Map;
 
+/**
+ * Dataobject representing an attribute
+ */
 @Data
 @NoArgsConstructor
 public class Attribute<T> {
