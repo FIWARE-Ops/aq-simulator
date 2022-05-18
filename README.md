@@ -24,5 +24,5 @@ Since list-configuration is better readable in yaml, the application.yaml is the
 
 Execution can be done via docker: 
 ```shell
-    docker run -v $(pwd)/application.yaml:/etc/sim/application.yaml -e MICRONAUT_CONFIG_FILES=/etc/sim/application.yaml quay.io/fiware/aq-simulator
+    docker run -v $(pwd)/application.yaml:/etc/sim/application.yaml -e MICRONAUT_CONFIG_FILES=/etc/sim/application.yaml quay.io/fiware/airquality-simulator
 ```
