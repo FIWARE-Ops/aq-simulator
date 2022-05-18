@@ -8,6 +8,9 @@ import java.time.Clock;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 
+/**
+ * Entry point for the application
+ */
 @Factory
 public class Application {
 
