@@ -35,7 +35,7 @@ public class Simulator {
 		log.info("Start to simulate data for {} ag-sensors.", generalConfig.getAqSimulations().size());
 
 		generalConfig.getAqSimulations().forEach(aqSimulation -> {
-			createAirQualityObserved(aqSimulation).startSimulation(aqSimulation.getAge(), generalConfig.getHistoricDensity(), aqSimulation.getSampleInterval());
+			createAirQualityObserved(aqSimulation).startSimulation(aqSimulation.getAge(), generalConfig.getHistoricDensity(), aqSimulation.getSampleInterval(), generalConfig.getStartupDelay());
 		});
 	}
 

@@ -11,6 +11,10 @@ micronaut:
         step: PT2s
         descriptions: false
 
+  http:
+    client:
+      read-timeout: 30s
+
 ---
 endpoints:
   metrics:

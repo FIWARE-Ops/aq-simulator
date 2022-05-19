@@ -14,6 +14,9 @@ import java.util.List;
 @Data
 public class GeneralConfig {
 
+	// delay data generation for a certain amount of seconds to avoid race-conditions with downstream subscribers
+	private int startupDelay = 120;
+
 	// minutes between historic datapoints
 	private int historicDensity = 15;
 	// fiware service to be used

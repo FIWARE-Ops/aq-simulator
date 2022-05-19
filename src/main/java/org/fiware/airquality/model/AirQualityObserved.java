@@ -45,10 +45,11 @@ public class AirQualityObserved {
 	private final AqData aqData;
 
 	// Starting point for the simulation
-	public void startSimulation(int age, int historicDensity, int sampleInterval) {
+	public void startSimulation(int age, int historicDensity, int sampleInterval, int startupDelay) {
 		log.info("Start simulation for {}", aqData.getId());
-		generateHistoricData(age, historicDensity);
-		scheduledExecutorService.scheduleAtFixedRate(this::updateData, getRandomNumber(0, 30).intValue(), sampleInterval, TimeUnit.SECONDS);
+		scheduledExecutorService.schedule(() -> generateHistoricData(age, historicDensity), startupDelay, TimeUnit.SECONDS);
+
+		scheduledExecutorService.scheduleAtFixedRate(this::updateData, startupDelay, sampleInterval, TimeUnit.SECONDS);
 	}
 
 	// Send an update of current data
