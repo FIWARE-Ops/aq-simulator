@@ -131,11 +131,23 @@
             <version>3.0.2</version>
         </dependency>
 
+
         <dependency>
-          <groupId>io.kokuwa.micronaut</groupId>
-          <artifactId>micronaut-logging</artifactId>
-          <version>${version.io.kokuwa.micronaut.logging}</version>
-          <scope>runtime</scope>
+            <groupId>org.keycloak</groupId>
+            <artifactId>keycloak-authz-client</artifactId>
+            <version>18.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.keycloak</groupId>
+            <artifactId>keycloak-admin-client</artifactId>
+            <version>18.0.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.kokuwa.micronaut</groupId>
+            <artifactId>micronaut-logging</artifactId>
+            <version>${version.io.kokuwa.micronaut.logging}</version>
+            <scope>runtime</scope>
         </dependency>
 
         <dependency>

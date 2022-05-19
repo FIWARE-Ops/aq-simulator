@@ -1,4 +1,6 @@
 micronaut:
+  server:
+    port: 7080
   application:
     name: ${project.artifactId}
 
@@ -26,5 +28,14 @@ loggers:
 
 ---
 general:
+  brokerUrl: "http://localhost:9080"
   aqSimulations:
     - id: "urn:ngsi:AirQualityObserved:test"
+
+---
+keycloak:
+  enabled: true
+  clientId: orion-pep
+  clientSecret: 978ad148-d99b-406d-83fc-578597290a79
+  realm: fiware-server
+  url: http://localhost:8080
