@@ -12,7 +12,7 @@ Since list-configuration is better readable in yaml, the application.yaml is the
 | general.brokerUrl                       | Url of the broker to send the data to                                 | ```http://localhost:1026``` |
 | general.historicDensity                 | Minutes between the data points generated for historical data.        | ```15```                    |
 | general.fiwareService                   | Fiware-Service for sending the data                                   | ```empty```                 |
-| general.fiwareServicePath               | Fiware-ServicePaht for sending the data                               | ```/```                     |
+| general.fiwareServicePath               | Fiware-ServicePath for sending the data                               | ```/```                     |
 | general.aqSimulations[]                 | List of aq Simulations to be created                                  | ```[]```                    |
 | general.aqSimulations[0].id             | Id to be used for the simulation. Will be generated if not provided.  | ```null```                  |
 | general.aqSimulations[0].lat            | Latitude of the aquality data.                                        | ```38.07```                 |
