@@ -34,8 +34,10 @@ general:
 
 ---
 keycloak:
-  enabled: true
-  clientId: orion-pep
-  clientSecret: 978ad148-d99b-406d-83fc-578597290a79
+  enabled: false
+  username: user
+  password: pwd
+  clientId: id
+  clientSecret: sec
   realm: fiware-server
   url: http://localhost:8080
