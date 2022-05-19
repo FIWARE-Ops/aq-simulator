@@ -1,4 +1,6 @@
 micronaut:
+  server:
+    port: 7080
   application:
     name: ${project.artifactId}
 
@@ -26,5 +28,16 @@ loggers:
 
 ---
 general:
+  brokerUrl: "http://localhost:9080"
   aqSimulations:
     - id: "urn:ngsi:AirQualityObserved:test"
+
+---
+keycloak:
+  enabled: false
+  username: user
+  password: pwd
+  clientId: id
+  clientSecret: sec
+  realm: fiware-server
+  url: http://localhost:8080
