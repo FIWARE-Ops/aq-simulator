@@ -7,7 +7,7 @@ Simulator for providing AirQuality Data to FIWARE platforms like [fiware-ops/mar
 Configuration can be done via the [Micronaut](https://micronaut.io/) standard mechanisms, e.g. [application.yaml](./src/main/resources/application.yaml) and environment-variables.
 Since list-configuration is better readable in yaml, the application.yaml is the recommended way to do it.
 
-| Property                                | Description                                                           | Env-Var                     |
+| Property                                | Description                                                           | Default                     |
 |-----------------------------------------|-----------------------------------------------------------------------|-----------------------------|
 | general.brokerUrl                       | Url of the broker to send the data to                                 | ```http://localhost:1026``` |
 | general.historicDensity                 | Minutes between the data points generated for historical data.        | ```15```                    |
@@ -43,3 +43,27 @@ The flow looks as following(everything in green is added when ```keycloak.enable
 ![secured-flow](./doc/sim_and_auth.svg)
 
 Be aware, that ```general.brokerUrl``` needs to be the url of the PEP-Proxy in the secured case. Else, no policy enforcement can happen.
+
+## Subscriptions
+
+For [QuantumLeap](https://github.com/orchestracities/ngsi-timeseries-api) to receive all the data, a subscription has to be setup. To do that, an image for creating the subscription is provided.
+
+The image is available at [fiware/v2-subscription-init](https://quay.io/repository/fiware/v2-subscription-init) and uses the broker-api to create the subscriptions. 
+
+### Configuration
+
+Configuration is done via environment variables:
+
+| Env-Var             | Description                                                          | Default                     |
+|---------------------|----------------------------------------------------------------------|-----------------------------|
+| FIWARE_SERVICE      | Fiware service to be used for the subscription(and notification)     | ``` ```                     |
+| FIWARE_SERVICE_PATH | Fiware servicepath to be used for the subscription(and notification) | ```/simulated```            |
+| BROKER_URL          | URL of the context-broker to create the configuration                | ```http://localhost:1026``` |
+| QUANTUM_LEAP_URL    | URL of the quantumleap-instance to receive the notifications         | ```http://localhost:8668``` |
+| ENTITY_TYPE         | Type of entities to subscribe to.                                    | ```AirQualityObserved```    |
+
+### Run
+
+```shell
+    docker run --network host -e QUANTUM_LEAP_URL=http://quantumleap-quantumleap:8668 -e FIWARE_SERVICE=test init
+```
