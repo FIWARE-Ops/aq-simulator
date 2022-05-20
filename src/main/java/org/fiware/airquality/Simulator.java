@@ -42,7 +42,7 @@ public class Simulator {
 
 	private AirQualityObserved createAirQualityObserved(AqSimulation aqSimulation) {
 		String id = Optional.ofNullable(aqSimulation.getId()).orElseGet(() -> String.format("urn:ngsi:AirQualityObserved:%s", UUID.randomUUID()));
-		Attribute<Point> locationAttribute = new Attribute<>("geo:json", new Point(List.of(aqSimulation.getLat(), aqSimulation.getLongi())));
+		Attribute<Point> locationAttribute = new Attribute<>("geo:json", new Point(List.of(aqSimulation.getLongi(), aqSimulation.getLat())));
 		Attribute<String> nameAttribute = new Attribute<>("Text", aqSimulation.getName());
 		AqData aqData = new AqData(id);
 		aqData.setLocation(locationAttribute);
