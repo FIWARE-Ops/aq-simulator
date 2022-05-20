@@ -9,6 +9,7 @@ import org.fiware.airquality.config.GeneralConfig;
 import org.fiware.airquality.model.AirQualityObserved;
 import org.fiware.airquality.model.AqData;
 import org.fiware.airquality.model.Attribute;
+import org.fiware.airquality.model.Point;
 
 import javax.annotation.PostConstruct;
 import java.time.Clock;
@@ -41,8 +42,7 @@ public class Simulator {
 
 	private AirQualityObserved createAirQualityObserved(AqSimulation aqSimulation) {
 		String id = Optional.ofNullable(aqSimulation.getId()).orElseGet(() -> String.format("urn:ngsi:AirQualityObserved:%s", UUID.randomUUID()));
-		Attribute<List<Double>> locationAttribute = new Attribute<>();
-		locationAttribute.setValue(List.of(aqSimulation.getLat(), aqSimulation.getLongi()));
+		Attribute<Point> locationAttribute = new Attribute<>("geo:json", new Point(List.of(aqSimulation.getLat(), aqSimulation.getLongi())));
 		AqData aqData = new AqData(id);
 		aqData.setLocation(locationAttribute);
 		return new AirQualityObserved(clock, defaultHttpClient, scheduledExecutorService, generalConfig.getBrokerUrl(), generalConfig.getFiwareService(), generalConfig.getFiwareServicePath(), aqData);

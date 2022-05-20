@@ -32,7 +32,7 @@ loggers:
 
 ---
 general:
-  brokerUrl: "http://localhost:9080"
+  brokerUrl: "http://localhost:1026"
   aqSimulations:
     - id: "urn:ngsi:AirQualityObserved:test"
 
