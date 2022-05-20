@@ -22,7 +22,7 @@ curl -X POST "${BROKER_URL}/v2/subscriptions" \
                   \"fiware-servicepath\" : \"${FIWARE_SERVICE_PATH}\"
                 },
                 \"attrs\": [
-                  \"co\", \"so2\", \"no2\", \"o3\", \"pm1\",\"pm25\",\"Ppm10\"
+                  \"co\", \"so2\", \"no2\", \"o3\", \"pm1\",\"pm25\",\"pm10\"
                 ]
               }
             }
