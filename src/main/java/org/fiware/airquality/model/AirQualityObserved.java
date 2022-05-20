@@ -99,7 +99,6 @@ public class AirQualityObserved {
 		aqData.setDataProvider(new Attribute<>("Text", "www.hopu.eu"));
 		aqData.setHumidity(new Attribute<>("Number", getRandomNumber(0, 100)));
 		aqData.setIca(new Attribute<>("Boolean", getRandomNumber(0, 1) > 0.5));
-		aqData.setName(new Attribute<>("Text", "Calle Mayor / Plaza Adolfo Suárez"));
 		aqData.setOperationalStatus(new Attribute<>("AirQualityObserved", getRandomNumber(0, 1) < 0.1 ? "DISCONNECTED" : "CONNECTED"));
 		aqData.getOperationalStatus().setMetadata(Map.of("dateObserved", dateObservedMetaData));
 		aqData.setParticulates(new Attribute<>("List", List.of("PM1", "PM10", "PM25")));

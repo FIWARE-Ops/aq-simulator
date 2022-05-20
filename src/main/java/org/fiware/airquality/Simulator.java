@@ -43,8 +43,10 @@ public class Simulator {
 	private AirQualityObserved createAirQualityObserved(AqSimulation aqSimulation) {
 		String id = Optional.ofNullable(aqSimulation.getId()).orElseGet(() -> String.format("urn:ngsi:AirQualityObserved:%s", UUID.randomUUID()));
 		Attribute<Point> locationAttribute = new Attribute<>("geo:json", new Point(List.of(aqSimulation.getLat(), aqSimulation.getLongi())));
+		Attribute<String> nameAttribute = new Attribute<>("Text", aqSimulation.getName());
 		AqData aqData = new AqData(id);
 		aqData.setLocation(locationAttribute);
+		aqData.setName(nameAttribute);
 		return new AirQualityObserved(clock, defaultHttpClient, scheduledExecutorService, generalConfig.getBrokerUrl(), generalConfig.getFiwareService(), generalConfig.getFiwareServicePath(), aqData);
 
 	}

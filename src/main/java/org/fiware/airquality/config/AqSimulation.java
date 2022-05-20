@@ -10,6 +10,8 @@ public class AqSimulation {
 
 	// Id to be used for the simulator
 	private String id;
+	// name of the device to be simulated
+	private String name;
 	// latitude to be used
 	private double lat = 38.07;
 	// longitude to be used
