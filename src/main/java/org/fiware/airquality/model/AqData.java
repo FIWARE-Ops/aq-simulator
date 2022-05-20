@@ -28,7 +28,7 @@ public class AqData {
 	private Attribute<String> dataProvider;
 	private Attribute<Double> humidity;
 	private Attribute<Boolean> ica;
-	private Attribute<List<Double>> location;
+	private Attribute<Point> location;
 	private Attribute<String> name;
 	private Attribute<String> operationalStatus;
 	private Attribute<List<String>> particulates;
