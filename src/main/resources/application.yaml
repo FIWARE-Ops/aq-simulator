@@ -32,7 +32,7 @@ loggers:
 
 ---
 general:
-  brokerUrl: "http://localhost:1026"
+  brokerUrl: "http://orion-ld-feature-quantumleap-error-3.apps.fiware-spain.emea-1.rht-labs.com:1026"
   aqSimulations:
     - id: "urn:ngsi:AirQualityObserved:test"
 

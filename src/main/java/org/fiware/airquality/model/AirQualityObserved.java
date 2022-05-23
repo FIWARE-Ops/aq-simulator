@@ -84,15 +84,15 @@ public class AirQualityObserved {
 	private void updateData(Instant dateObserved) {
 		MetaDataEntry<String> dateObservedMetaData = new MetaDataEntry<>("DateTime", DATE_TIME_FORMATTER.format(dateObserved));
 
-		aqData.setCo(generateDoubleAttribute(dateObservedMetaData, 0, 60000, "0,9999,good|10000,29999,unhealthyForSensitiveGroups|30000,49999,unhealthy|50000,-,hazardous", "CO value"));
+		aqData.setCo(generateDoubleAttribute(dateObservedMetaData, 100, 1500, "0,9999,good|10000,29999,unhealthyForSensitiveGroups|30000,49999,unhealthy|50000,-,hazardous", "CO value"));
 		aqData.setH2s(generateDoubleAttribute(dateObservedMetaData, 0, 30000, "0,4999,good|5000,9999,unhealthyForSensitiveGroups|10000,19999,unhealthy|20000,-,hazardous", "H2S value"));
 		aqData.setNo(generateDoubleAttribute(dateObservedMetaData, 0, 30000, "0,2499,good|2500,6999,unhealthyForSensitiveGroups|7000,19999,unhealthy|20000,-,hazardous", "NO value"));
-		aqData.setNo2(generateDoubleAttribute(dateObservedMetaData, 0, 1100, "0,199,good|200,559,unhealthyForSensitiveGroups|560,999,unhealthy|1000,-,hazardous", "NO2 value"));
-		aqData.setO3(generateDoubleAttribute(dateObservedMetaData, 0, 350, "0,119,good|120,239,unhealthyForSensitiveGroups|240,299,unhealthy|300,-,hazardous", "03 value"));
-		aqData.setPm1(generateDoubleAttribute(dateObservedMetaData, 0, 110, "0,14,good|15,59,unhealthyForSensitiveGroups|60,99,unhealthy|100,-,hazardous", "PM1 value"));
-		aqData.setPm10(generateDoubleAttribute(dateObservedMetaData, 0, 210, "0,49,good|50,149,unhealthyForSensitiveGroups|150,199,unhealthy|200,-,hazardous", "PM10 value"));
-		aqData.setPm25(generateDoubleAttribute(dateObservedMetaData, 0, 210, "0,49,good|50,149,unhealthyForSensitiveGroups|150,199,unhealthy|200,-,hazardous", "PM2.5 value"));
-		aqData.setSo2(generateDoubleAttribute(dateObservedMetaData, 0, 2100, "0,349,good|350,999,unhealthyForSensitiveGroups|1000,1999,unhealthy|2000,-,hazardous", "SO2 value"));
+		aqData.setNo2(generateDoubleAttribute(dateObservedMetaData, 20, 120, "0,199,good|200,559,unhealthyForSensitiveGroups|560,999,unhealthy|1000,-,hazardous", "NO2 value"));
+		aqData.setO3(generateDoubleAttribute(dateObservedMetaData, 20, 130, "0,119,good|120,239,unhealthyForSensitiveGroups|240,299,unhealthy|300,-,hazardous", "03 value"));
+		aqData.setPm1(generateDoubleAttribute(dateObservedMetaData, 5, 25, "0,14,good|15,59,unhealthyForSensitiveGroups|60,99,unhealthy|100,-,hazardous", "PM1 value"));
+		aqData.setPm10(generateDoubleAttribute(dateObservedMetaData, 5, 50, "0,49,good|50,149,unhealthyForSensitiveGroups|150,199,unhealthy|200,-,hazardous", "PM10 value"));
+		aqData.setPm25(generateDoubleAttribute(dateObservedMetaData, 5, 25, "0,49,good|50,149,unhealthyForSensitiveGroups|150,199,unhealthy|200,-,hazardous", "PM2.5 value"));
+		aqData.setSo2(generateDoubleAttribute(dateObservedMetaData, 20, 350, "0,349,good|350,999,unhealthyForSensitiveGroups|1000,1999,unhealthy|2000,-,hazardous", "SO2 value"));
 		aqData.setVoc(generateDoubleAttribute(dateObservedMetaData, 900, 1300, "", "VOC value"));
 
 		aqData.setTimeInstant(new Attribute<>("DateTime", DATE_TIME_FORMATTER.format(dateObserved)));
