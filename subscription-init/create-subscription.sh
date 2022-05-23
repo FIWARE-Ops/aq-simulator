@@ -15,15 +15,15 @@ curl -X POST "${BROKER_URL}/v2/subscriptions" \
                 ]
             },
             \"notification\": {
+              \"attrs\": [
+                  \"co\", \"so2\", \"no2\", \"o3\", \"pm1\",\"pm25\",\"pm10\"
+              ],
               \"httpCustom\": {
                 \"url\": \"${QUANTUM_LEAP_URL}/v2/notify\",
                 \"headers\": {
                   \"fiware-service\" : \"${FIWARE_SERVICE}\",
                   \"fiware-servicepath\" : \"${FIWARE_SERVICE_PATH}\"
-                },
-                \"attrs\": [
-                  \"co\", \"so2\", \"no2\", \"o3\", \"pm1\",\"pm25\",\"pm10\"
-                ]
+                }
               }
             }
           }"
